@@ -1,0 +1,8 @@
+body{
+    background: linear-gradient(to right,#fdfdfd, #ebedee 70%);
+}
+
+.text{
+    background:linear-gradient(90deg, #662d91,#eabdee);
+    -webkit-text-fill-color: transparent;
+}

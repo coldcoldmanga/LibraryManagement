@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
+
+*{
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+.form-control, .form-select, label{
+
+    margin-left:15px;
+    
+}
+
+.author, .price{
+    width: 90%;
+}
+
+
+.submit, .back{
+    margin-left: 10px;
+}
+

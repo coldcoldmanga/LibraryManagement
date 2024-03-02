@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+body{
+    background: #f2f2f2;
+    background-image:url();
+    background-size: cover;
+}
+
+nav{
+    background:#E6E6FA;
+    height: 90px;
+}
+
+nav:after{
+    content:'';
+    clear:both;
+    display:table;
+}
+
+nav .logo{
+
+    float:left;
+    margin-left:24px;
+    margin-top: -80px;
+}
+
+nav .title{
+
+    float:left;
+    color:#662d91;
+    font-size:40px;
+    font-weight: 600;
+    line-height:85px;
+    margin-left:-200px;
+}
+
+nav ul{
+    float:right;
+    list-style:none;
+    margin-right:40px;
+    position:relative;
+
+}
+
+nav ul li{
+    float:none;
+    display:inline-block;
+    background:none;
+    margin:0 5px;
+    padding-top: 5px;;
+}
+
+nav ul li a{
+
+    color:#662d91;
+    text-decoration:none;
+    line-height:75px;
+    font-size:22px;
+    font-weight: 600;
+    padding:8px 15px;
+    width:100px;
+
+}
+
+nav ul li a:hover{
+
+    color:red;
+    border-radius:5px;
+    box-shadow: 0 0 5px #f2f2f2,
+                0 0 5px #662d91;
+}
+
+nav ul ul li a:hover{
+
+    color:red;
+    box-shadow: none;
+}
+
+nav ul ul{
+
+    position:absolute;
+    top:100px;
+    opacity:0;
+    visibility: hidden;
+    transition: top .3s;
+}
+
+nav ul li:hover > ul{
+
+    top: 80px;
+    opacity:1;
+    background:#E6E6FA;
+    visibility:visible;
+} 
+
+nav ul ul li{
+    
+    position:relative;
+    margin:0px -50px 0px -30px;
+    width:180px;
+    float:none;
+    display:list-item;
+    border-bottom: solid rgba(#E6E6FA);
+}
+
+nav ul ul li a{
+
+    line-height:50px;
+}

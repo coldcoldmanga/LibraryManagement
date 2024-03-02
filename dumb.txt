@@ -1,0 +1,339 @@
+<!-- Popup Modal for Borrow -->
+<div class="modal fade" id="borrow" tabindex="-1" aria-labelledby="borrowLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="borrowLabel">Borrow</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="borrowForm" action="borrow.php" method="post" autocomplete="off">
+
+      <div class="modal-body">
+        <label for="bookID">Book ID</label>
+        <input type="text" name="bookID" placeholder="Book ID" id="bookID" class="form-control">
+
+        <label for="studentID">Student ID</label>
+        <input type="text" name="studentID" placeholder="Student ID" id="studentID" class="form-control"><br>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="" name="borrow" id="borrow">Borrow</button>
+      </div>
+
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Popup Modal for Return -->
+<div class="modal fade" id="return" tabindex="-1" aria-labelledby="returnLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="returnLabel">Return</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form action="return.php" method="post">
+
+      <div class="modal-body">
+        <label for="bookID">Book ID</label>
+        <input type="text" name="bookID" placeholder="Book ID" id="bookID" class="form-control">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="return">Return</button>
+      </div>
+
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+<!-- Jquery -->
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+body{
+    background: #f2f2f2;
+    background-image:url(mainPic.jpg);
+    background-size: cover;
+}
+
+nav{
+    background:none;
+}
+
+nav:after{
+    content:'';
+    clear:both;
+    display:table;
+}
+
+nav .logo{
+
+    float:left;
+    color:white;
+    font-size:27px;
+    font-weight: 600;
+    line-height:80px;
+    padding-left:60px;
+}
+
+nav ul{
+    float:right;
+    list-style:none;
+    margin-right:40px;
+    position:relative;
+
+}
+
+nav ul li{
+    float:none;
+    display:inline-block;
+    background:none;
+    margin:0 5px;
+    padding-top: 5px;;
+}
+
+nav ul li a{
+
+    color:white;
+    text-decoration:none;
+    line-height:70px;
+    font-size:18px;
+    padding:8px 15px;
+    width:100px;
+
+}
+
+nav ul li a:hover{
+
+    color:cyan;
+    border-radius:5px;
+    box-shadow: none;
+}
+
+nav ul ul li a:hover{
+
+    color:cyan;
+    box-shadow:none;
+}
+
+nav ul ul{
+
+    position:absolute;
+    top:90px;
+    opacity:0;
+    visibility: hidden;
+    transition: top .3s;
+}
+
+nav ul li:hover > ul{
+
+    top: 70px;
+    opacity:1;
+    visibility:visible;
+} 
+
+nav ul ul li{
+    
+    position:relative;
+    margin:0px;
+    width:147px;
+    float:none;
+    display:list-item;
+    border-bottom:1px solid rgba(blue);
+}
+
+nav ul ul li a{
+
+    line-height:50px;
+}
+
+//book.php
+
+<div class="card w-75">
+        <h5 class="card-header">Key in the Books</h5>
+            <form action="book.php" method="post" class="row g-3"> 
+                <div class="col-md-6">
+                    <label for="bookID" class="form-label">Book ID</label>
+                    <input type="text" class="form-control" name="bookID" required> 
+                </div>
+
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Author</label>
+                    <input type="text" class="form-control author" name="author" required> 
+                </div>
+
+                <div class="col-12">
+                    <label for="author" class="form-label">Title</label>
+                    <input type="text" class="form-control title" name="title" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="type" class="form-label">Type</label>
+                    <select id="type" class="form-select" required>
+                        <option selected>Type...</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Journal">Journal</option>
+                        <option value="Reference">Reference</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="publisher" class="form-label">Publisher</label>
+                    <input type="text" class="form-control" name="publisher" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="ISBN" class="form-label">ISBN</label>
+                    <input type="text" class="form-control" name="ISBN" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" class="form-control price" name="price" required>
+                </div>
+
+                <div class="col-12">
+                    <a href="main.php" class="btn btn-secondary back">Go Back</a>
+                    <button type="submit" name="add" class="btn btn-primary submit">Add Book</button>
+                </div><br>
+            </form>
+</div>
+
+<div class='alert alert-success' role='alert'>
+                            <h4 class='text-center'>
+                                Book Added Successfully
+                            </h4>
+                        </div>
+
+if(isset($_POST['search'])){
+
+    $input = ucwords($_POST['input']);
+
+    $search = mysqli_query($conn, "SELECT * FROM member WHERE name LIKE '{$input}%' OR memberID = '$input'");
+
+    if(mysqli_num_rows($search) > 0){ 
+        
+        while($row = mysqli_fetch_assoc($search)){
+
+            $memberData = mysqli_query($conn, "SELECT * FROM member WHERE memberID = '$row[memberID]' ");
+            $memberInfo = mysqli_fetch_assoc($memberData);
+
+            $output ="
+            
+                    <div class='table-responsive-sm result-member'>
+                        <table class='table table-striped table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th scope='col'>Member ID</th>
+                                    <th scope='col'>Name</th>
+                                    <th scope='col'>Class</th>
+                                    <th scope='col'>Status</th>
+                                    <th scope='col'>Telephone</th>
+                                    <th scope='col'>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>$memberInfo[memberID]</td>
+                                    <td>$memberInfo[name]</td>
+                                    <td>$memberInfo[class]</td>
+                                    <td>$memberInfo[level]</td>
+                                    <td>$memberInfo[telephone]</td>
+                                    <td><a href='editProcess.php?memberID=$row[memberID]'>Edit</a>
+                                        <a href='deleteMember.php?memberID=$row[memberID]'>Delete</a></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+            ";
+
+            echo $output;
+        }        
+
+   }
+        
+ }
+
+ if(isset($_POST['searchBook'])){
+
+    $input = ucwords($_POST['input']);
+
+    $search = mysqli_query($conn, "SELECT * FROM book WHERE title LIKE '{$input}%' OR bookID = '$input'");
+
+    if(mysqli_num_rows($search) > 0){ 
+        
+        while($row = mysqli_fetch_assoc($search)){
+
+            $bookData = mysqli_query($conn, "SELECT * FROM book WHERE bookID = '$row[bookID]' ");
+            $bookInfo = mysqli_fetch_assoc($bookData);
+
+            $output ="
+            
+                    <div class='table-responsive-sm result-book'>
+                        <table class='table table-striped table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th scope='col'>Book ID</th>
+                                    <th scope='col'>Title</th>
+                                    <th scope='col'>Author</th>
+                                    <th scope='col'>Type</th>
+                                    <th scope='col'>Price</th>
+                                    <th scope='col'>Added Date</th>
+                                    <th scope='col'>Status</th>
+                                    <th scope='col'>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>$bookInfo[bookID]</td>
+                                    <td>$bookInfo[title]</td>
+                                    <td>$bookInfo[author]</td>
+                                    <td>$bookInfo[type]</td>
+                                    <td>$bookInfo[price]</td>
+                                    <td>$bookInfo[datetime]</td>
+                                    <td>$bookInfo[stats]</td>
+                                    <td><a href='editBookProcess.php?bookID=$row[bookID]'>Edit</a>
+                                        <a href='deleteBook.php?bookID=$row[bookID]'>Delete</a></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+            ";
+
+            echo $output;
+        }        
+
+   }
+        
+ }
