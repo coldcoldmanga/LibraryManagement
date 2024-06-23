@@ -10,7 +10,6 @@ if(isset($_POST['register'])){
 
     $memberID = $_POST['id'];
 	$name = ucwords($_POST['name']);
-	$email = $_POST['id']."@student.mmu.edu.my";
 	$password = $_POST['id'];
 	$class = ucwords($_POST['class']);
 	$level = ucwords($_POST['level']);
@@ -31,6 +30,15 @@ echo "<script>alert('Use only alphabets and numbers');
 	}
 
 	else{
+
+		if($class != 'teacher' || $class != 'Teacher')
+		{
+			$email = $memberID."@student.mmu.edu.my";
+		}
+		else
+		{
+			$email = $memberID."@.mmu.edu.my";
+		}
 
 		$register = "SELECT name FROM member WHERE name = ?;";
 
