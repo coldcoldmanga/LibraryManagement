@@ -1,8 +1,8 @@
 <?php 
-require('config.php');
+require('../config.php');
 require('memberHeader.php');
 require('memberNavbar.php');
-require('mailSend.php');
+require('../mailSend.php');
 
 //generate a random 6-digit otp number
 function generateOTP()
@@ -137,16 +137,16 @@ button, .btn{
 
                 <div class="password">
                     <label for="password" class="form-label">Password</label>
-                    <input type="text" class="form-control" name="password" autocomplete="off" required> 
+                    <input type="password" class="form-control" name="password" autocomplete="off" required> 
                 </div>
 
                 <div class="c-password">
                     <label for="otp-num" class="form-label">Confirm Password</label>
-                    <input type="text" class="form-control" name="c-password" autocomplete="off" required> 
+                    <input type="password" class="form-control" name="c-password" autocomplete="off" required> 
                 </div>
 
 				
-				<a href="main.php" class="btn btn-secondary" style="margin-top: 20px;">Go Back</a>
+				<a href="memberPage.php" class="btn btn-secondary" style="margin-top: 20px;">Go Back</a>
                 <button type="submit" name="submit" class="btn btn-primary " style="margin-top: 20px;">Submit</button>
 
 			</form>

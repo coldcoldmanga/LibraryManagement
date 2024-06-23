@@ -1,8 +1,8 @@
 <?php 
 
-include('footer.php');
+include('../footer.php');
 require('memberHeader.php');
-require('config.php');
+require('../config.php');
 
     //get the member's borrowing record
     $borrowRecord = mysqli_query($conn, "SELECT * FROM borrow WHERE memberID = '$_SESSION[memberID]' AND status = 'Borrowing' ");
@@ -19,8 +19,8 @@ require('config.php');
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="wide=device-width,initial-scale=1.0">
-<link rel="stylesheet" href="gradient.css">
-<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="../gradient.css">
+<link rel="stylesheet" href="../css/nav.css">
 
 <!-- Bootstrap CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -54,7 +54,7 @@ require('config.php');
 <!-- Navbar -->
     <nav class="shadow-sm">
 
-        <div class="logo"><a href="memberPage.php"><img src="img/logo1.png" alt="Logo" srcset="" width="150"  height="270"></a></div>
+        <div class="logo"><a href="memberPage.php"><img src="../img/logo1.png" alt="Logo" srcset="" width="150"  height="270"></a></div>
         <div class="title">Minimalist Library</div>
 
         <ul>

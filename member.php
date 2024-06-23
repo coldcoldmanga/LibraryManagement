@@ -61,7 +61,6 @@ echo "<script>alert('Use only alphabets and numbers');
 
 			  echo "<script>alert('NAME ALREADY IN DATABASE!');
 			  window.location='member.php'</script>";
-			
 
 			}
 

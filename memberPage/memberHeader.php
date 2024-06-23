@@ -37,6 +37,10 @@ if(!isset($_SESSION['memberID'])){
 	font-family: 'Noto Sans SC', sans-serif;
 }
 
+body{
+    background: linear-gradient(to right,#fdfdfd, #ebedee 70%);
+}
+
 </style>
 
 </head>

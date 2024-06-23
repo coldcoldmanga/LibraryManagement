@@ -1,7 +1,7 @@
 <?php 
 
-require('config.php');
-require('footer.php');
+require('../config.php');
+require('../footer.php');
 
 if(isset($_POST['login'])){
 
@@ -187,10 +187,10 @@ label{
 		<div class="row content shadow-lg">
 		<h4>Member Login Portal</h4>
 			<div class="col-md-6 mb-3">
-				<img src="img/login.svg" class="img-fluid login" alt="image">
+				<img src="../img/login.svg" class="img-fluid login" alt="image">
 			</div>
 			<div class="col-md-6 box">
-			<img src="img/logo1.png" alt="Logo" class="logo"><h3 class="signin-text mb-3">Minimalist Library</h3>
+			<img src="../img/logo1.png" alt="Logo" class="logo"><h3 class="signin-text mb-3">Minimalist Library</h3>
 					<form action="memberLogin.php" method="post">
 
 						<div class="form-group">
