@@ -55,9 +55,9 @@ $bookID = $_POST['input'];
                             <td><?php echo $ISBN;  ?></td>
                             <td><?php echo $date;  ?></td>
                             <td><?php echo $status;  ?></td>
-                            <td>
-                                <form action="editBookProcess.php" method="post" style="display:inline-block;"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="edit" class="btn btn-secondary">Edit</button></form>
-                                <form action="deleteBook.php" method="post" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this book?')"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="delete" class="btn btn-danger">Delete</button></form>
+                            <td style="display:flex; justify-content: space-evenly">
+                                <form action="editBookProc;ess.php" method="post"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="edit" class="btn btn-secondary edit">Edit</button></form>
+                                <form action="deleteBook.php" method="post" onsubmit="return confirm('Are you sure you want to delete this book?')"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="delete" class="btn btn-danger delete">Delete</button></form>
                             </td>
                         </tr>
 
@@ -73,7 +73,7 @@ $bookID = $_POST['input'];
         
         else{
 
-            echo "<h6>No Data Found</h6>";
+            echo "<center><h6>No Data Found</h6></center>";
         }
         
        
@@ -94,12 +94,28 @@ body{
     background: #f2f2f2;
 }
 
-    .table{
-        position: relative;
-        margin-top: 30px;
-        margin-left: 150px;
-        width: 960px;
+.table{
+     width: 100%;
+     margin-top: 20px;
     }
+
+    .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .book, .member{
+           margin-top: 30px;
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           
+        }
 
 
     </style>

@@ -19,7 +19,25 @@ include('navbar.php');
     
     <style type="text/css">
 
-    .member{
+.row{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.book, .member{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+           
+}
+
+    /* .member{
         margin-top: 150px;
         margin-left:350px
     }
@@ -28,7 +46,7 @@ include('navbar.php');
         margin-top: 100px;
         margin-left: 350px;
           
-    }
+    } */
 
     .btn{
         margin-top: 20px;
