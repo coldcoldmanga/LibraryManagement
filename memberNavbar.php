@@ -138,11 +138,12 @@ nav ul ul li a{
     <!-- Navbar -->
     <nav class="shadow-sm">
 
-        <div class="logo"><a href="memberPage.php"><img src="logo1.png" alt="Logo" srcset="" width="150"  height="270"></a></div>
+        <div class="logo"><a href="memberPage.php"><img src="img/logo1.png" alt="Logo" srcset="" width="150"  height="270"></a></div>
         <div class="title">Minimalist Library</div>
 
         <ul>
             <li><a href="Memberrequest.php">Request</a></li>
+            <li><a href="changePassword.php">Change Password</a></li>
             <li><a href="memberLogout.php" onclick="return confirm('Proceed to Logout?');">Logout</a></li>
             
         </ul>

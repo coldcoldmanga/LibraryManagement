@@ -77,7 +77,7 @@ if(mysqli_num_rows($call) > 0){ ?>
 }
 else{ ?>
 
-<h2 class="text-center">No Member with due date lesser than 3 day from now</h2>
+<h2 class="">No Member with due date lesser than 3 day from now</h2>
 
 
     
@@ -107,6 +107,11 @@ th,td{
 .table{
         position: relative;
         margin-top: 30px;
+    }
+
+    h2{
+        margin: 30px;
+        text-align: center;
     }
 
 </style>

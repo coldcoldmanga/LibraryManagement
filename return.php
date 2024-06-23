@@ -10,6 +10,8 @@ if(isset($_POST['return'])){
     date_default_timezone_set("Asia/Singapore");
 
     $bookID = ucwords($_POST['bookID']);
+    $book = mysqli_query($conn,"SELECT * FROM book WHERE bookID = '$bookID' ");
+    $checkBook = mysqli_num_rows($book);
 
     if(empty($bookID)){ ?>
       
@@ -20,6 +22,17 @@ if(isset($_POST['return'])){
         </div>
         
  <?php   }
+
+ 
+else if($checkBook == 0){ ?>
+
+    <div class="alert alert-warning" role="alert">
+        <h4 class="text-center">
+            Book does not exist!
+        </h4>
+    </div>
+
+<?php  }
 
     else if(!preg_match('/^[a-zA-Z0-9\s]{1,}$/',$bookID)){ ?>
 

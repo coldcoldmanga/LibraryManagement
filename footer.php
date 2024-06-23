@@ -23,12 +23,6 @@
             margin-top: 20px;
         }
 
-        .contact{
-            display: inline-block;
-            margin-left: 10px;
-            margin-top: 20px;
-        }
-
     </style>
 
 </head>

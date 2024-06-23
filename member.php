@@ -4,25 +4,26 @@ require('config.php');
 require('header.php');
 require('footer.php');
 include('navbar.php');
+require('mailSend.php');
 
 if(isset($_POST['register'])){
 
-    $memberID = "";
+    $memberID = $_POST['id'];
 	$name = ucwords($_POST['name']);
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$email = $_POST['id']."@student.mmu.edu.my";
+	$password = $_POST['id'];
 	$class = ucwords($_POST['class']);
 	$level = ucwords($_POST['level']);
 	$telephone = $_POST['telephone'];
 
 
-	if(empty($name) OR empty($email) OR empty($password) OR empty($class) OR empty($level) OR  empty($telephone)){ ?>
+	if(empty($memberID) OR empty($name) OR empty($class) OR empty($level) OR  empty($telephone)){ ?>
 
 		<script>window.location = 'member.php'</script>
 
 <?php	} 
 
-	else if(!preg_match('/[A-Za-z0-9\s]+/',$name) OR !preg_match('/[A-Za-z0-9\s]+/',$email) OR !preg_match('/[A-Za-z0-9\s]+/',$password) OR !preg_match('/[A-Za-z0-9\s]+/',$class) OR !preg_match('/[A-Za-z0-9\s]+/',$level) OR !preg_match('/[A-Za-z0-9\s]+/',$telephone)){ 
+	else if(!preg_match('/[A-Za-z0-9\s]+/',$memberID) OR !preg_match('/[A-Za-z0-9\s]+/',$name) OR !preg_match('/[A-Za-z0-9\s]+/',$class) OR !preg_match('/[A-Za-z0-9\s]+/',$level) OR !preg_match('/[A-Za-z0-9\s]+/',$telephone)){ 
 
 echo "<script>alert('Use only alphabets and numbers');
 		window.location='member.php'</script>";
@@ -72,18 +73,16 @@ echo "<script>alert('Use only alphabets and numbers');
 
 				else{
 
-					$date = date("Y");
-					$year = substr($date, 2,3);
-                    $number = rand(10000,99999);
-                    $memberID = $year.$number;
-
 					mysqli_stmt_bind_param($stmt,"sssssss",$memberID,$name,$class,$level,$telephone,$email,$hashpwd);
 					mysqli_stmt_execute($stmt);
 
                     if($stmt){
 
+						//send email to student to update their password
+						sendMail($email,"MMU Library","Please update your password. Your default password is your member ID. Thank you.");
+						
 						//move_uploaded_file($_FILES['img']['tmp_name'], "$img"); ?>
-
+					
 							<div class="alert alert-success" role="alert">
                             	<h4 class="text-center">
                                 	Registered Successfully
@@ -115,8 +114,9 @@ echo "<script>alert('Use only alphabets and numbers');
 		margin-left: 15px;	
 	}
 
-	.back{
+	.btn{
 		margin-left: 15px;
+		margin-bottom: 10px;
 	}
 
 	.card{
@@ -125,16 +125,20 @@ echo "<script>alert('Use only alphabets and numbers');
 		
 	}
 
-	.img, .name, .class, .level, .telephone{
+	.id, .name, .class, .level, .telephone{
 		margin-left: 15px;
 	}
 
-	.img{
+	.id{
 		width: 98%;
 	}
 
 	.name{
 		width: 98%;
+	}
+
+	.class{
+		width:94%
 	}
 
 	.password{
@@ -153,12 +157,17 @@ echo "<script>alert('Use only alphabets and numbers');
         <h5 class="card-header">Registering Member</h5>
             <form action="member.php" method="post" class="row g-3">
 
+				<div class="col-4">
+                    <label for="name" class="form-label">Member's ID</label>
+                    <input type="text" class="form-control id" name="id" autocomplete="off">
+                </div>
+
                 <div class="col-4">
                     <label for="name" class="form-label">Member's Name</label>
                     <input type="text" class="form-control name" name="name" autocomplete="off">
                 </div>
 
-				<div class="col-4">
+				<!-- <div class="col-4">
                     <label for="name" class="form-label">Member's Email</label>
                     <input type="text" class="form-control email" name="email" autocomplete="off">
                 </div>
@@ -166,15 +175,21 @@ echo "<script>alert('Use only alphabets and numbers');
 				<div class="col-4">
                     <label for="password" class="form-label">Member's Password</label>
                     <input type="text" class="form-control password" name="password" autocomplete="off">
-                </div>
+                </div> -->
 
 				<div class="col-md-4">
-                    <label for="class" class="form-label">Member's Class/Position</label>
-                    <input type="text" class="form-control class" name="class" placeholder="If teacher, put teacher as input" autocomplete="off">
+				<label for="class" class="form-label">Status</label>
+                    <select id="level" class="form-select class" name="class">
+                        <option selected>Faculty</option>
+                        <option value="FIST">FIST</option>
+                        <option value="FET">FET</option>
+                        <option value="FOB">FOB</option>
+                        <option value="FOL">FOL</option>
+                    </select>
                 </div>
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="level" class="form-label">Status</label>
                     <select id="level" class="form-select level" name="level">
                         <option selected>Status...</option>

@@ -14,6 +14,12 @@ if(isset($_POST['borrow'])){
     $Bdate = date("Y-m-d");
     $status = "Borrowing";
 
+    //check if book or student exists
+    $book = mysqli_query($conn,"SELECT * FROM book WHERE bookID = '$bookID' ");
+    $checkBook = mysqli_num_rows($book);
+    $member = mysqli_query($conn,"SELECT * FROM member WHERE memberID = '$memberID' ");
+    $checkMember = mysqli_num_rows($member);
+
     //check if the book is borrowed
     $book = mysqli_query($conn,"SELECT * FROM borrow WHERE bookID = '$bookID' AND status = 'Borrowing' ");
     $checkBorrowed = mysqli_num_rows($book);
@@ -46,6 +52,26 @@ if(isset($_POST['borrow'])){
 
 <?php	}
 
+else if($checkBook == 0){ ?>
+
+    <div class="alert alert-warning" role="alert">
+        <h4 class="text-center">
+            Book does not exist!
+        </h4>
+    </div>
+
+<?php  }
+
+    else if($checkMember == 0){ ?>
+
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="text-center">
+                            Member does not exist!
+                        </h4>
+                    </div>
+
+  <?php  }
+
     else if($checkBorrowed > 0){ ?>
 
             <div class="alert alert-warning" role="alert">
@@ -54,6 +80,7 @@ if(isset($_POST['borrow'])){
                 </h4>
             </div>
   <?php  }
+
 
     else if($result['penalty'] > 0){ ?>
 

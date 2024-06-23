@@ -82,44 +82,7 @@ if(isset($_POST['add'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style type="text/css">
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
-
-*{
-    font-family: 'Noto Sans SC', sans-serif;
-}
-
-.container{
-    margin-top: 100px;
-    margin-left: 300px;
-}
-
-.form-control, .form-select, label{
-
-    margin-left:15px;
-    
-}
-
-.author, .price{
-    width: 90%;
-}
-
-
-.back{
-    margin-left: 15px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-.submit{
-    margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-</style>
+    <link rel="stylesheet" href="css/book.css">
    
 </head>
 <body>  

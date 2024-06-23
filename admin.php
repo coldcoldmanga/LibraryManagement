@@ -149,8 +149,8 @@ if(isset($_POST['register'])){
 		margin-bottom: 10px;
 	}
 
-	button{
-		margin-left: 5px;
+	button, .btn{
+		margin-left: 10px;
 		margin-bottom: 10px;
 	}
 
