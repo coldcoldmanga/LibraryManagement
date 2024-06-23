@@ -105,3 +105,10 @@ nav ul ul li a{
 
     line-height:50px;
 }
+
+div span{
+    background-color: white; 
+    border-radius: 50%; 
+    width: 20px; 
+    height: 20px;
+}

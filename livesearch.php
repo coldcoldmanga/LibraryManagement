@@ -93,10 +93,28 @@ body{
     background: #f2f2f2;
 }
 
-        .table{
+
+.table{
+     width: 100%;
+     margin-top: 20px;
+    }
+
+    .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             position: relative;
-            margin-top: 30px;
-            margin-left: 300px;
+        }
+
+        .book, .member{
+           margin-top: 30px;
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           
         }
 
     </style>

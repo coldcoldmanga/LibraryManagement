@@ -13,56 +13,58 @@ if(isset($_POST['input'])){
        
 
         if(mysqli_num_rows($borrow) > 0){ ?>
-
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Book ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Borrowed Date</th>
-                        <th scope="col">Return Date</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <?php 
-                    
-                        while($resultBorrow = mysqli_fetch_assoc($borrow) AND  $fetchTitle = mysqli_fetch_assoc($title)){
-
-                            $bookID = $resultBorrow['bookID'];
-                            $bookTitle = $fetchTitle['title'];
-                            $Bdate = $resultBorrow['Bdate'];
-                            $Rdate = $resultBorrow['Rdate'];
-
-                             ?>
-
-                                <tr>
-                                <td><?php echo $bookID;  ?></td>
-                                <td><?php echo $bookTitle;  ?></td>
-                                <td><?php echo $Bdate;  ?></td>
-                                <td><?php echo $Rdate;  ?></td>
-                            </tr>
-
-                       <?php     }
+            <div class="container">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Book ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Borrowed Date</th>
+                            <th scope="col">Return Date</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+    
+                        <?php 
                         
-                    
-                    ?>
+                            while($resultBorrow = mysqli_fetch_assoc($borrow) AND  $fetchTitle = mysqli_fetch_assoc($title)){
+    
+                                $bookID = $resultBorrow['bookID'];
+                                $bookTitle = $fetchTitle['title'];
+                                $Bdate = $resultBorrow['Bdate'];
+                                $Rdate = $resultBorrow['Rdate'];
+    
+                                 ?>
+    
+                                    <tr>
+                                    <td><?php echo $bookID;  ?></td>
+                                    <td><?php echo $bookTitle;  ?></td>
+                                    <td><?php echo $Bdate;  ?></td>
+                                    <td><?php echo $Rdate;  ?></td>
+                                </tr>
+    
+                           <?php     }
+                            
+                        
+                        ?>
+    
+                        
+    
+                       
+    
+                      
+    
+                    </tbody>
+                </table>   
 
-                    
-
-                   
-
-                  
-
-                </tbody>
-            </table>   
+            </div>
 
             <?php   }
             
             else{
 
-                echo "<h6>No Data Found</h6>";
+                echo "<center><h6>No Data Found</h6></center>";
             }
             
            
@@ -82,11 +84,27 @@ if(isset($_POST['input'])){
 body{
     background: #f2f2f2;
 }
-
         .table{
             position: relative;
-            margin-top: 30px;
-            margin-left: 300px;
+            margin-top: 20px;
+        }
+
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .book, .member{
+           margin-top: 30px;
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           
         }
 
     </style>

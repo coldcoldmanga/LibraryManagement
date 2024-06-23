@@ -15,7 +15,6 @@ $member = mysqli_query($conn, "SELECT * FROM member");
 while($row = mysqli_fetch_assoc($member)){
 
     $data.= $row['memberID'].",";
-    $data.= $row['img'].",";
     $data.= $row['name'].",";
     $data.= $row['class'].",";
     $data.= $row['level'].",";
