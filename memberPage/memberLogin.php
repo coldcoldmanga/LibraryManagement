@@ -206,7 +206,7 @@ label{
 						</div><br>
 
 						<button class="btn btn-class" name="login">Login<i class="bi bi-send" style="margin-left: 10px;"></i></button>
-						<a href="index.php" style="padding-left: 10px;">Admin? Click Here</a>
+						<a href="../index.php" style="padding-left: 10px;">Admin? Click Here</a>
 						
 
 					</form>

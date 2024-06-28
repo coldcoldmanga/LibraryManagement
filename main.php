@@ -53,8 +53,7 @@ include('header.php');
               <a href="#">Utilities</a>
               <ul>
                 <li><a href="search.php">Search</a></li>
-                <li><a href="fine.php">Penalty</a></li>
-                <!-- <li><a href="reward.php">Reward</a></li> -->
+                <li><a href="penalty.php">Penalty</a></li>
                 <li><a href="reminder.php">Reminder</a></li>
                 <li><a href="update.php">Update</a></li>
                 <li><a href="backup.php">Backup</a></li>

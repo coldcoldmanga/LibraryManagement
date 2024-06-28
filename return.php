@@ -69,6 +69,7 @@ else if($checkBook == 0){ ?>
             $result = mysqli_fetch_assoc($amount);
             $finalAmount = $result['penalty'] + $fine;
 
+            $updateMemberPenalty = mysqli_query($conn,"UPDATE member SET penalty = '$finalAmount' WHERE memberID = '$memberID' ");
             $return = mysqli_query($conn,"UPDATE borrow SET status = 'Returned' WHERE bookID = '$bookID' AND status = 'Borrowing'"); 
             
              ?>

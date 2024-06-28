@@ -44,7 +44,7 @@ $memberID = $_POST['input'];
                             <td><?php echo $status;  ?></td>
                             <td><?php echo $telephone;  ?></td>
                             <td style="display:flex; justify-content: space-evenly; align-content:center">
-                                <form action="editProcess.php" method="post"><input type="hidden" name="memberID" value="<?php echo $memberID; ?>"><button type="submit" name="edit" class="btn btn-secondary">Edit</button></form>
+                                <form action="editMemberProcess.php" method="post"><input type="hidden" name="memberID" value="<?php echo $memberID; ?>"><button type="submit" name="edit" class="btn btn-secondary">Edit</button></form>
                                 <form action="deleteMember.php" method="post" onsubmit="return confirm('Are you sure you want to delete this member?')"><input type="hidden" name="memberID" value="<?php echo $memberID; ?>"><button type="submit" name="delete" class="btn btn-danger">Delete</button></form>
                             </td>
                         </tr>

@@ -57,7 +57,7 @@ include('navbar.php');
         <h5 class="card-header">Backup Penalty Records</h5>
             <form action="backupFine.php" method="post"> 
             <div class="card-body">
-                <button type="submit" name="fine" class="btn btn-primary ">Export Penalty Data to Excel</button>
+                <button type="submit" name="borrow" class="btn btn-primary ">Export Penalty Data to Excel</button>
             </div>
             </form>
     </div>

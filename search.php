@@ -36,12 +36,10 @@ include('navbar.php');
            align-items: center;
            
         }
-/* 
-        .member{
-           margin-top: 100px;
-           margin-left: 350px;
-          
-        } */
+
+        .back{
+            margin-top: 25px;
+        }
 
     </style>
 
@@ -50,9 +48,8 @@ include('navbar.php');
 <div class="container text-center">
     <div class="row">
         <div class="col-12 book">
-            <h2>Related to Books</h2>
+            <h2>Search Exsiting Book Record</h2>
             <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg"><a href="main.php"><i class="bi bi-house-fill" style="margin-right: 10px;  color:black; font-size: 25px;"></i></a>Search For Books</span>
                 <input type="text" id="live-search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Eg: Book Title or Author">
         </div>
         </div>
@@ -63,14 +60,15 @@ include('navbar.php');
         
 
         <div class="col-12 member">
-            <h2>Member's Borrowing Record</h2>
+            <h2>Search Member's Ongoing Borrowing Record</h2>
             <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg"><a href="main.php"><i class="bi bi-house-fill" style="margin-right: 10px;  color:black; font-size: 25px;"></i></a>For Borrowing Record</span>
                 <input type="text" id="live-searchStudent" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Eg: Member ID">
             </div>
         </div>
         <div id="searchResultStudent"></div>
     </div>
+
+    <div class="back"><a href="main.php" class="btn btn-secondary">Go back</a></div>
 </div>
     
 

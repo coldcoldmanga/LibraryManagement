@@ -76,7 +76,6 @@ include('navbar.php');
         <div class="col-12 member">
             <h2>Update Member</h2>
             <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg"><a href="main.php"><i class="bi bi-house-fill" style="margin-right: 10px;  color:black; font-size: 25px;"></i></a>Search For Member</span>
                 <input type="text" id="updateMember" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Eg: Member ID or Name">
         </div>
         </div>
@@ -89,7 +88,6 @@ include('navbar.php');
         <div class="col-12 book">
             <h2>Update Book</h2>
             <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg"><a href="main.php"><i class="bi bi-house-fill" style="margin-right: 10px;  color:black; font-size: 25px;"></i></a>Search For Book</span>
                 <input type="text" id="updateBook" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Eg: Book ID or Title">
             </div>
         </div>

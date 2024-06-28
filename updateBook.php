@@ -9,6 +9,8 @@ $bookID = $_POST['input'];
 
     $search = mysqli_query($conn,"SELECT * FROM book WHERE title LIKE '{$bookID}%' OR bookID LIKE '{$bookID}%' ");
 
+    $delete =  mysqli_query($conn, "DELETE FROM book WHERE bookID = '$bookID'");
+
     if(mysqli_num_rows($search) > 0){ ?>
 
         <table class="table table-striped table-bordered resultMember">
@@ -56,7 +58,7 @@ $bookID = $_POST['input'];
                             <td><?php echo $date;  ?></td>
                             <td><?php echo $status;  ?></td>
                             <td style="display:flex; justify-content: space-evenly">
-                                <form action="editBookProc;ess.php" method="post"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="edit" class="btn btn-secondary edit">Edit</button></form>
+                                <form action="editBookProcess.php" method="post"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="edit" class="btn btn-secondary edit">Edit</button></form>
                                 <form action="deleteBook.php" method="post" onsubmit="return confirm('Are you sure you want to delete this book?')"><input type="hidden" name="bookID" value="<?php echo $bookID; ?>"><button type="submit" name="delete" class="btn btn-danger delete">Delete</button></form>
                             </td>
                         </tr>

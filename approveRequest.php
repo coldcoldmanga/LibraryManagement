@@ -2,6 +2,7 @@
 
 require('config.php');
 require('header.php');
+require('mailSend.php');
 
 if(isset($_POST['approve'])){
 
@@ -13,16 +14,13 @@ if(isset($_POST['approve'])){
 
     $update = mysqli_query($conn, "UPDATE request SET status = 'Approved' WHERE requestID = '$requestID' ");
 
-    $to = $fetchMember['email'];
-    $subject = "[SCHOOL LIBRARY] Your request have been approved";
-    $content = "Dear $fetchMember[name], your request to borrow the book $fetchBook[title] have been approved, please come to the school library to redeem the book as soon as possible.";
-    $headers = "From: Your-Email\r\n";
+    $send = sendRequest($fetchMember['email'],$fetchBook['title']);
 
-    $send = mail($to,$subject,$content,$headers);
 
-    if($update AND $send){
 
-        echo "<script>alert('Updated and Sent Successfully');
+    if($send){
+
+        echo "<script>alert('Updated and Email Sent Successfully');
 		window.location='request.php'</script>";
     }
     else{

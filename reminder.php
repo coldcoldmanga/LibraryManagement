@@ -4,6 +4,7 @@ require('config.php');
 require('header.php');
 require('navbar.php');
 require('footer.php');
+require('mailSend.php');
 
 $call = mysqli_query($conn, "CALL reminder()");
 
@@ -48,7 +49,7 @@ if(mysqli_num_rows($call) > 0){ ?>
                 <td><?php echo $title;  ?></td>
                 <td><?php echo $Bdate;  ?></td>
                 <td><?php echo $Rdate;  ?></td>
-                <td><form action="reminderEmail.php" method="post">
+                <td><form action="reminder.php" method="post">
                 <input type="hidden" name="memberID" value="<?php echo $memberID?>">
                 <input type="hidden" name="name" value="<?php echo $name?>">
                 <input type="hidden" name="email" value="<?php echo $email?>">
@@ -56,12 +57,14 @@ if(mysqli_num_rows($call) > 0){ ?>
                 <input type="hidden" name="title" value="<?php echo $title?>">
                 <input type="hidden" name="Bdate" value="<?php echo $Bdate?>">
                 <input type="hidden" name="Rdate" value="<?php echo $Rdate?>">
-                <!--<a href="mailto:" <?php $email?> name="submit" class="btn btn-primary email">Email</button></form>-->
-                <?php echo "<button class='btn btn-primary' name='submit'><a href='mailto:" . $email . "?body=" . "test" . "' style='color:white'>Send</button>";?>
+                <button class="btn btn-primary" name="send" type="submit">Send Email</button>
+                </form>
                 </td>
             </tr>
-   <?php     }  
-        
+   <?php     } 
+   
+   
+   
         ?>
         
         </tbody>
@@ -78,10 +81,29 @@ if(mysqli_num_rows($call) > 0){ ?>
 else{ ?>
 
 <h2 class="">No Member with due date lesser than 3 day from now</h2>
-
-
     
 <?php }
+
+//email reminder
+
+if(isset($_POST['send'])){
+    $memberID = $_POST['memberID'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $bookID = $_POST['bookID'];
+    $title = $_POST['title'];
+    $Bdate = $_POST['Bdate'];
+    $Rdate = $_POST['Rdate'];
+
+    $send = sendReminder($email, $name, $title, $Bdate, $Rdate);
+
+    if($send){
+        echo "<script>alert('Email sent successfully');window.location='reminder.php'</script>";
+    }
+    else{
+        echo "<script>alert('Email not sent');window.location='reminder.php'</script>";
+    }
+}
 
 ?>
 

@@ -2,20 +2,24 @@
 
 require('config.php');
 
-if(isset($_POST['fine'])){
+if(isset($_POST['borrow'])){
 
 $date = date("Y/m/d");
 
-@header("Content-Disposition: attachment; filename= PenaltyBackup_$date.csv"); 
+@header("Content-Disposition: attachment; filename= BorrowRecordBackup_$date.csv"); 
 
 $data = '';
 
-$penalty = mysqli_query($conn, "SELECT * FROM borrow  WHERE borrow.penalty > 0");
+$borrow = mysqli_query($conn, "SELECT * FROM borrow");
 
-while($row = mysqli_fetch_assoc($penalty)){
+while($row = mysqli_fetch_assoc($borrow)){
 
     $data.= $row['borrowID'].",";
+    $data.= $row['bookID'].",";
     $data.= $row['memberID'].",";
+    $data.= $row['Bdate'].",";
+    $data.= $row['Rdate'].",";
+    $data.= $row['status'].",";
     $data.= $row['penalty']."\n";
 }
 

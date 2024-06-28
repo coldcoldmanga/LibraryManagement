@@ -5,28 +5,24 @@ require('header.php');
 require('footer.php');
 include('navbar.php');
 
-if(isset($_POST['search'])){
+//check member penalty amount
+if(isset($_POST['check'])){
 
-    $input = ucwords($_POST['input']);
+    $memberID = $_POST['memberID'];
 
-    if(empty($input)){
+    $check = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
 
-        header("location:Sfine.php");
-    }
-    else if(!preg_match('/[A-Za-z0-9\s]+/',$memberID)){ ?>
+    $result = mysqli_fetch_assoc($check);
+    $penalty = $result['penalty'];
+
+    ?>
 
             <div class="alert alert-warning" role="alert">
                 <h4 class="text-center">
-                    Use only alphabets and numbers!
+                <?php echo "Penalty Amount: RM $penalty"; ?>
                 </h4>
-            </div>
-
- <?php   }
-    
-    else{
-
-        $search = mysqli_query($conn, "SELECT penalty.amount FROM member INNER JOIN penalty.member ON member.memberID WHERE memberID = '$input' OR name = '$input'");
-    }
+            </div> 
+            <?php
 }
 
 if(isset($_POST['submit'])){
@@ -101,6 +97,11 @@ if(isset($_POST['submit'])){
         margin-top: 100px;
     }
 
+    .btn{
+        margin-top: 20px; 
+        margin-left:5px;
+    }
+
 </style>
 
 </head>
@@ -108,7 +109,16 @@ if(isset($_POST['submit'])){
 
     <div class="card w-50">
         <h5 class="card-header">Settling Penalty Fee</h5>
-            <form action="fine.php" method="post"> 
+
+            <form action="penalty.php" method="post">
+            <div class="card-body">
+            <label for="studentID">Check Member Penalty</label>
+            <input type="text" name="memberID" class="form-control" autocomplete="off">
+            <button type="submit" name="check" class="btn btn-primary">Check</button>
+            </div>
+            </form>
+
+            <form action="penalty.php" method="post"> 
             <div class="card-body">
                
                 <label for="studentID">Member's ID</label>
@@ -118,7 +128,7 @@ if(isset($_POST['submit'])){
                 <input type="text" name="amount" class="form-control" autocomplete="off">
 
                 <a href="main.php" class="btn btn-secondary" style="margin-top: 20px;">Go Back</a>
-                <button type="submit" name="submit" class="btn btn-primary" style="margin-top: 20px; margin-left:5px;">Pay</button>
+                <button type="submit" name="submit" class="btn btn-primary">Pay</button>
                 
             </div>
             </form>
