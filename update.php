@@ -37,17 +37,6 @@ include('navbar.php');
            
 }
 
-    /* .member{
-        margin-top: 150px;
-        margin-left:350px
-    }
-
-    .book{
-        margin-top: 100px;
-        margin-left: 350px;
-          
-    } */
-
     .btn{
         margin-top: 20px;
         

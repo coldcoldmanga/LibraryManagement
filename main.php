@@ -36,7 +36,7 @@ include('header.php');
                 </ul>
         
             </li>
-            <li><div><a href="request.php">Request</a><span id="notification">
+            <li><div><a href="request.php">Request</a><span class="notification">
                 <?php $notification = mysqli_query($conn, "SELECT * FROM request WHERE status = 'Pending'");
 
                     while($row = mysqli_fetch_assoc($notification)){
@@ -106,6 +106,7 @@ include('header.php');
             
        </div>
     </div>
+
 
     <script src="quote.js"></script>
 

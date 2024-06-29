@@ -58,36 +58,44 @@ if(isset($_POST['member'])){
         
             
 
-  } ?>
+  } 
+  
+  ?>
+
 
 <div class="alert alert-success" role="alert">
 <h4 class="text-center">
      Member Record Imported Successfully
 </h4>
 </div>
-<?php }
+<?php }             
 
-//Importing the Penalty Record
-/*if(isset($_POST['fine'])){
+//Importing the Borrow Record
+if(isset($_POST['borrow'])){
 
-    $file = $_FILES["importPenalty"]["tmp_name"];
+    $file = $_FILES["importBorrow"]["tmp_name"];
     $file_open =fopen($file,"r");
     
     while(($csv = fgetcsv($file_open,1000,",")) !== false){
 
-        $memberID = ucwords($csv[0]);
-        $amount = $csv[1];
+        $borrowID = ucwords($csv[0]);
+        $bookID = ucwords($csv[1]);
+        $memberID = ucwords($csv[2]);
+        $Rdate = $csv[3];
+        $Rtime = $csv[4];
+        $status = $csv[5];
+        $penalty = $csv[6];
         
-        mysqli_query($conn, "INSERT INTO penalty(memberID, amount) VALUES ('$memberID','$amount')"); ?>
+        mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Rdate','$Rtime','$status','$penalty')"); ?>
         
             <div class="alert alert-success" role="alert">
                 <h4 class="text-center">
-                     Penalty Record Imported Successfully
+                     Borrow Record Imported Successfully
                 </h4>
             </div>
 
 <?php }
-}*/
+}
 
 ?>
 
@@ -141,15 +149,15 @@ if(isset($_POST['member'])){
             </form>
     </div>
 
-    <!--<div class="card w-50 box">
-        <h5 class="card-header">Import Penalty Records</h5>
+    <div class="card w-50 box">
+        <h5 class="card-header">Import Borrow Records</h5>
             <form action="import.php" method="post" enctype="multipart/form-data"> 
             <div class="card-body">
                 <input type="file" class="form-control" name="importPenalty">
-                <button type="submit" name="fine" class="btn btn-primary ">Import Penalty Data to Excel</button>
+                <button type="submit" name="borrow" class="btn btn-primary ">Import Penalty Data to Excel</button>
             </div>
             </form>
-    </div>-->
+    </div>
 
         <div class="container">
             <a href="main.php" class="btn btn-sencondary">Go Back</a>

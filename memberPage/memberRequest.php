@@ -15,6 +15,21 @@ require('memberNavbar.php');
 
      <!--Jquery Cdn-->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        .container{
+            margin-top: 25px;
+        }
+
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+    </style>
+
 </head>
 <body>
 

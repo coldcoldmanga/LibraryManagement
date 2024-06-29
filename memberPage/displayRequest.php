@@ -78,16 +78,18 @@ if(isset($_POST['input'])){
 
 <style type="text/css">
 
-body{
-    background: #f2f2f2;
-}
-
-    .table{
-        position: relative;
-        margin-top: 30px;
-        margin-left: 150px;
-        width: 960px;
+.table{
+     width: 100%;
+     margin-top: 20px;
     }
+
+    .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
 
     </style>
 

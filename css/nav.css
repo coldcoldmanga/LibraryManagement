@@ -55,7 +55,7 @@ nav ul li a{
     font-weight: 600;
     padding:8px 15px;
     width:100px;
-
+    
 }
 
 nav ul li a:hover{
@@ -106,9 +106,18 @@ nav ul ul li a{
     line-height:50px;
 }
 
-div span{
-    background-color: white; 
-    border-radius: 50%; 
-    width: 20px; 
-    height: 20px;
+div span.notification{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    color: white;
+    margin-left: 5px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 37%;   
+    right: 26.5%;
 }
