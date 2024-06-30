@@ -9,6 +9,10 @@ require('../config.php');
     $title = mysqli_query($conn,"SELECT book.title FROM borrow INNER JOIN book ON borrow.bookID = book.bookID WHERE memberID = '$_SESSION[memberID]' AND status = 'Borrowing' ");
     $checkRow = mysqli_num_rows($borrowRecord);
 
+    //get the member's penalty if any
+    $getPenalty = mysqli_query($conn, "SELECT penalty FROM member WHERE memberID = '$_SESSION[memberID]' ");
+    $row = mysqli_fetch_assoc($getPenalty);
+    $penalty = $row['penalty'];
 
 ?>
 
@@ -113,8 +117,7 @@ require('../config.php');
     
     ?>
   
-
-    
+        <h4>Your penalty due: RM <?php $penalty;  ?></h4>
 
 </div>
 
