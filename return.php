@@ -11,6 +11,8 @@ if(isset($_POST['return'])){
 
     $bookID = ucwords($_POST['bookID']);
     $book = mysqli_query($conn,"SELECT * FROM book WHERE bookID = '$bookID' ");
+    $borrow = mysqli_query($conn, "SELECT * FROM borrow WHERE bookID = '$bookID' AND status = 'Borrowing' ");
+    $checkBorrowed = mysqli_num_rows($borrow);
     $checkBook = mysqli_num_rows($book);
 
     if(empty($bookID)){ ?>
@@ -29,6 +31,17 @@ else if($checkBook == 0){ ?>
     <div class="alert alert-warning" role="alert">
         <h4 class="text-center">
             Book does not exist!
+        </h4>
+    </div>
+
+    <?php   }
+
+ 
+else if($checkBorrowed <= 0){ ?>
+
+    <div class="alert alert-warning" role="alert">
+        <h4 class="text-center">
+            This book is not borrowed!
         </h4>
     </div>
 
