@@ -20,7 +20,6 @@ if(isset($_POST['login'])){
 
 		echo "<script>alert('Use only alphabets and numbers);
 			  window.location='index.php'</script>";
-		exit();
 	}
 
 	else{
@@ -33,7 +32,6 @@ if(isset($_POST['login'])){
 
 			echo"<script>alert('Failed Connectig to Server!');
 					window.location='index.php'</script>";
-			exit();
 		}
 
 		else{
@@ -47,9 +45,12 @@ if(isset($_POST['login'])){
 
 				$pwdCheck = password_verify($password,$row['password']);
 
-				if($adminID != $row['adminID'] || $pwdCheck == false){
 
-					echo "<script>alert('Wrong Admin ID or Wrong Password!');
+
+
+				if($pwdCheck == false){
+
+					echo "<script>alert('Wrong Password!');
 			  		window.location='index.php'</script>";
 
 				}
@@ -64,6 +65,11 @@ if(isset($_POST['login'])){
 					exit($status);
 				}
 
+			}
+			else{
+
+				echo "<script>alert('Wrong Admin ID');
+			  	window.location='index.php'</script>";
 			}
 
 		}

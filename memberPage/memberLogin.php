@@ -47,9 +47,9 @@ if(isset($_POST['login'])){
 
 				$pwdCheck = password_verify($password,$row['password']);
 
-				if($id != $row['memberID'] OR $pwdCheck == false){
+				if($pwdCheck == false){
 
-					echo "<script>alert('Wrong ID or Wrong Password!');
+					echo "<script>alert('Wrong Password!');
 			  		window.location='memberLogin.php'</script>";
 
 				}
@@ -63,6 +63,10 @@ if(isset($_POST['login'])){
 					exit();
 				}
 
+			}
+			else{
+				echo "<script>alert('Wrong ID!');
+				window.location='memberLogin.php'</script>";
 			}
 
 		}
