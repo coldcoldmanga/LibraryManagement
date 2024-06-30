@@ -49,33 +49,46 @@ if(isset($_POST['submit'])){
 <?php    }
     else{
 
-        $memberFine = mysqli_query($conn,"SELECT * FROM member WHERE memberID = '$memberID' ");
+        $memberFine = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
         $result = mysqli_fetch_assoc($memberFine);
 
-        $check = $result['penalty'] - $amount;
-
-        if(!$check == 0){
-
-            $update = mysqli_query($conn,"UPDATE member SET penalty = '$check' WHERE memberID = '$memberID' "); ?>
+        if($result['penalty'] <= 0){ ?>
 
             <div class="alert alert-warning" role="alert">
-                        <h4 class="text-center">
-                            You still need to pay RM <?php echo $check; ?>!
-                        </h4>
-                    </div>
-  <?php    }
+                <h4 class="text-center">
+                You don't have any penalty due!
+                </h4>
+            </div>
 
-        else{
+        <?php }else{
 
-            $update = mysqli_query($conn,"UPDATE member SET penalty = 0 WHERE memberID = '$memberID' "); ?>
-            
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="text-center">
-                            Thank you for paying your penalty!
-                        </h4>
-                    </div>
+$check = $result['penalty'] - $amount;
 
-    <?php   }
+
+
+if(!$check == 0){
+
+    $update = mysqli_query($conn,"UPDATE member SET penalty = '$check' WHERE memberID = '$memberID' "); ?>
+
+    <div class="alert alert-warning" role="alert">
+                <h4 class="text-center">
+                    You still need to pay RM <?php echo $check; ?>!
+                </h4>
+            </div>
+<?php    }
+
+else{
+
+    $update = mysqli_query($conn,"UPDATE member SET penalty = 0 WHERE memberID = '$memberID' "); ?>
+    
+            <div class="alert alert-success" role="alert">
+                <h4 class="text-center">
+                    Thank you for paying your penalty!
+                </h4>
+            </div>
+
+<?php   }
+        }
 
     }
 
