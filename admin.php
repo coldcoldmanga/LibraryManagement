@@ -97,7 +97,6 @@ if(isset($_POST['register'])){
 	}
 
 	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
 }
 
  ?>
@@ -118,44 +117,7 @@ if(isset($_POST['register'])){
 <html lang="en">
 <head>
 	
-<style type="text/css">
-
-	label{
-		margin-left: 20px;
-		margin-top: 10px;
-	}
-
-	.card{
-
-		margin-top: 150px;
-		margin-left: 500px;
-	}
-
-	.form-control{
-
-		width: 97%;
-		margin-left: 10px;
-	}
-
-	.form-select{
-
-		width: 97%;
-		margin-left: 10px;
-	}
-
-	a{
-
-		margin-left: 0px;
-		margin-bottom: 10px;
-	}
-
-	button, .btn{
-		margin-left: 10px;
-		margin-bottom: 10px;
-	}
-
-</style>
-
+<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 	
