@@ -117,7 +117,7 @@ require('../config.php');
     
     ?>
   
-        <h4>Your penalty due: RM <?php $penalty;  ?></h4>
+        <h4>Your penalty due: RM <?php echo $penalty;  ?></h4>
 
 </div>
 
