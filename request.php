@@ -73,6 +73,8 @@ else{ ?>
 
     <div class="container">
         <h2 class="noRequest">No request pending</h2>
+
+        <a href="main.php" class="btn btn-secondary" style="margin-top: 20px;">Go Back</a>
     </div>
     
 <?php }

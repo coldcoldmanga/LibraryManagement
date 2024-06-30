@@ -40,16 +40,28 @@ include('header.php');
                 <?php $notification = mysqli_query($conn, "SELECT * FROM request WHERE status = 'Pending'");
 
                     while($row = mysqli_fetch_assoc($notification)){
-                        if(mysqli_num_rows($notification) > 0){
+                        if(mysqli_num_rows($notification) >= 0){
                             $pending = mysqli_num_rows($notification);
-                            echo $pending;
-                        }
+                            echo $pending; ?>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                const notification = document.querySelector('.notification');
+    
+                                if (parseInt(notification.textContent) > 0) {
+                                    notification.classList.add('active');
+                                }
+});
+
+                            </script>
+                      <?php  }
                         else{
-                        $pending = 0;
                         echo $pending;
+
+
                         }
                         }  ?></span></div></li>
-            <li>
+            <li>    
               <a href="#">Utilities</a>
               <ul>
                 <li><a href="search.php">Search</a></li>

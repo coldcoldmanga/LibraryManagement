@@ -51,12 +51,13 @@ if(isset($_POST['submit'])){
 
             <div class="alert alert-warning" role="alert">
                 <h4 class="text-center">
-                Amount should only be positive number!
+                Amount should only be positive!
                 </h4>
             </div>
 
 <?php    }
-    else{
+    
+else{
 
         $memberFine = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
         $result = mysqli_fetch_assoc($memberFine);
@@ -69,7 +70,19 @@ if(isset($_POST['submit'])){
                 </h4>
             </div>
 
-        <?php }else{
+<?php }
+
+else if($amount > $result['penalty']){ ?>
+
+<div class="alert alert-warning" role="alert">
+                <h4 class="text-center">
+                The amount entered is larger than the member's penalty due!
+                </h4>
+            </div>
+
+<?php }
+
+else{
 
 $check = $result['penalty'] - $amount;
 
