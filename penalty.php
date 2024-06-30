@@ -47,6 +47,15 @@ if(isset($_POST['submit'])){
             </div>
 
 <?php    }
+    else if($amount <=0){ ?>
+
+            <div class="alert alert-warning" role="alert">
+                <h4 class="text-center">
+                Amount should only be positive number!
+                </h4>
+            </div>
+
+<?php    }
     else{
 
         $memberFine = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
