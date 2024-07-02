@@ -19,7 +19,7 @@ if(isset($_POST['book'])){
         $author = ucwords($csv[2]);
         $publisher = ucwords($csv[3]);
         $type = $csv[4];
-        $price = $csv[5];
+        $price = trim($csv[5]);
         $ISBN = $csv[6];
         $datetime = new DateTime($csv[7]);
         $formattedDateTime = $datetime->format('Y-m-d H:i:s'); //to make sure the format comply with mysql standard
@@ -59,7 +59,7 @@ if(isset($_FILES["importMember"]) && $_FILES["importMember"]["error"] == 0){
         $telephone = $csv[4];
         $email = $csv[5];
         $password = $csv[6];
-        $penalty = $csv[7];
+        $penalty = trim($csv[7]);
 
         $insert = mysqli_query($conn, "INSERT INTO member(memberID, name, class, level, telephone, email, password, penalty) VALUES ('$memberID','$name','$class','$level','$telephone', '$email', '$password', '$penalty')"); ?> 
 
@@ -82,7 +82,7 @@ if(isset($_FILES["importMember"]) && $_FILES["importMember"]["error"] == 0){
 //Importing the Borrow Record
 if(isset($_POST['borrow'])){
 
-    if(isset($_FILES["importBook"]) && $_FILES["importBook"]["error"] == 0){
+    if(isset($_FILES["importBorrow"]) && $_FILES["importBorrow"]["error"] == 0){
         $file = $_FILES["importBorrow"]["tmp_name"];
         $file_open =fopen($file,"r");
         
@@ -91,12 +91,12 @@ if(isset($_POST['borrow'])){
             $borrowID = ucwords($csv[0]);
             $bookID = ucwords($csv[1]);
             $memberID = ucwords($csv[2]);
-            $Rdate = $csv[3];
-            $Rtime = $csv[4];
+            $Bdate = ($csv[3]);
+            $Rdate = $csv[4];
             $status = $csv[5];
-            $penalty = $csv[6];
+            $penalty = trim($csv[6]);
             
-            mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Rdate','$Rtime','$status','$penalty')"); ?>
+            mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Bdate','$Rdate','$status','$penalty')"); ?>
             
                 <div class="alert alert-success" role="alert">
                     <h4 class="text-center">
@@ -167,7 +167,7 @@ if(isset($_POST['borrow'])){
         <h5 class="card-header">Import Borrow Records</h5>
             <form action="import.php" method="post" enctype="multipart/form-data"> 
             <div class="card-body">
-                <input type="file" class="form-control" name="importPenalty">
+                <input type="file" class="form-control" name="importBorrow">
                 <button type="submit" name="borrow" class="btn btn-primary ">Import Penalty Data to Excel</button>
             </div>
             </form>
