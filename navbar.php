@@ -27,7 +27,31 @@
                 </ul>
         
             </li>
-            <li><a href="request.php">Request</a></li>
+            <li><div><a href="request.php">Request</a><span class="notification">
+                <?php $notification = mysqli_query($conn, "SELECT * FROM request WHERE status = 'Pending'");
+
+                    if($row = mysqli_fetch_assoc($notification)){
+                        if(mysqli_num_rows($notification) >= 0){
+                            $pending = mysqli_num_rows($notification);
+                            echo $pending; ?>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                const notification = document.querySelector('.notification');
+    
+                                if (parseInt(notification.textContent) > 0) {
+                                    notification.classList.add('active');
+                                }
+});
+
+                            </script>
+                      <?php  }
+                        else{
+                        echo $pending;
+
+
+                        }
+                        }  ?></span></div></li>
             <li>
               <a href="#">Utilities</a>
               <ul>
