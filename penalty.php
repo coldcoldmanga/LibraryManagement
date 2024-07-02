@@ -46,6 +46,7 @@ if(isset($_POST['submit'])){
                 </h4>
             </div>
 
+
 <?php    }
     else if($amount <=0){ ?>
 
@@ -63,15 +64,17 @@ else{
         $memberFine = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
         $result = mysqli_fetch_assoc($memberFine);
 
-        if($result['penalty'] <= 0){ ?>
+        if(mysqli_num_rows($memberFine) <= 0){ ?>
 
             <div class="alert alert-warning" role="alert">
                 <h4 class="text-center">
-                You don't have any penalty due!
+                This member does not exists!
                 </h4>
             </div>
 
 <?php }
+
+
 
 //check if amount is larger than penalty
 else if($amount > $result['penalty']){ ?>
@@ -83,6 +86,17 @@ else if($amount > $result['penalty']){ ?>
             </div>
 
 <?php }
+
+//check if member have any penalty due
+else if($result['penalty'] <= 0){ ?>
+
+    <div class="alert alert-warning" role="alert">
+                    <h4 class="text-center">
+                    You don't have any penalty due!
+                    </h4>
+                </div>
+    
+    <?php }
 
 else{
 
