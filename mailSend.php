@@ -44,7 +44,20 @@ function sendOTP($email, $otp)
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Password Reset OTP";
-    $mail->Body = "Your OTP is <b>$otp</b>";
+    $mail->Body = "
+    <html>
+    <body>
+        <p>Good day,</p>
+        
+        <p>Your OTP code is <b>$otp</b></p>
+        
+        <p>Do not reply this email.</p>
+        
+        <p>Best regards,<br>
+        Minimalist Library</p>
+    </body>
+    </html>
+    ";;
     $mail->AltBody = "Your OTP is $otp";
   
     $mail->send();
@@ -55,7 +68,7 @@ function sendOTP($email, $otp)
 }
 
 //send email to tell member their request is approved
-function sendRequest($email, $bookID){
+function sendRequest($email, $bookTitle, $name){
     $mail = new PHPMailer(true);
     $mail->isSMTP();
     $mail->SMTPAuth = true;
@@ -68,8 +81,21 @@ function sendRequest($email, $bookID){
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Request Approved";
-    $mail->Body = "Your request for $bookID is approved.";
-    $mail->AltBody = "Your request for $bookID is approved.";
+    $mail->Body = $mail->Body = "
+    <html>
+    <body>
+        <p>Good day $name,</p> 
+        
+        <p>Your request for book: $bookTitle has been approved.</p>
+        
+        <p>You may come to the library to borrow the book.</p>
+        
+        <p>Best regards,<br>
+        Minimalist Library</p>
+    </body>
+    </html>
+    ";
+    $mail->AltBody = "Your request for $bookTitle is approved.";
   
     $mail->send();
 
@@ -92,7 +118,30 @@ function sendReminder($email,$name, $title, $Bdate, $Rdate){
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Reminder";
-    $mail->Body = "Dear $name, you will need to return the book $title that you borrowed on $Bdate not later than $Rdate. If you returned the book late, you will need to pay the penalty.";
+    $mail->Body = "
+<html>
+<body>
+    <p>Dear $name,</p>
+    
+    <p>This is a friendly reminder about the book you borrowed:</p>
+    
+    <ul>
+        <li>Book Title: $title</li>
+        <li>Borrowed Date: $Bdate</li>
+        <li>Return Due Date: $Rdate</li>
+    </ul>
+    
+    <p>Please ensure you return the book no later than the due date to avoid any late fees.</p>
+    
+    <p>If you have any questions or need to extend your loan, please don't hesitate to contact us.</p>
+    
+    <p>Thank you for using our library services.</p>
+    
+    <p>Best regards,<br>
+    Minimalist Library</p>
+</body>
+</html>
+";
     $mail->AltBody = "Dear $name, you will need to return the book $title that you borrowed on $Bdate not later than $Rdate. If you returned the book late, you will need to pay the penalty.";
   
     $mail->send();

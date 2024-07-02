@@ -39,7 +39,7 @@ include('header.php');
             <li><div><a href="request.php">Request</a><span class="notification">
                 <?php $notification = mysqli_query($conn, "SELECT * FROM request WHERE status = 'Pending'");
 
-                    while($row = mysqli_fetch_assoc($notification)){
+                    if($row = mysqli_fetch_assoc($notification)){
                         if(mysqli_num_rows($notification) >= 0){
                             $pending = mysqli_num_rows($notification);
                             echo $pending; ?>

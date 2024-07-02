@@ -14,7 +14,7 @@ if(isset($_POST['approve'])){
 
     $update = mysqli_query($conn, "UPDATE request SET status = 'Approved' WHERE requestID = '$requestID' ");
 
-    $send = sendRequest($fetchMember['email'],$fetchBook['title']);
+    $send = sendRequest($fetchMember['email'],$fetchBook['title'],$fetchMember['name']);
 
 
 

@@ -86,9 +86,9 @@ echo "<script>alert('Use only alphabets and numbers');
                     if($stmt){
 
 						//send email to student to update their password
-						sendMail($email,"MMU Library","Please update your password. Your default password is your member ID. Thank you.");
+						sendMail($email,"Minimalist Library","Please update your password. Your default password is your member ID. Thank you.");
 						
-						//move_uploaded_file($_FILES['img']['tmp_name'], "$img"); ?>
+ ?>
 					
 							<div class="alert alert-success" role="alert">
                             	<h4 class="text-center">
@@ -185,7 +185,7 @@ echo "<script>alert('Use only alphabets and numbers');
                 </div> -->
 
 				<div class="col-md-4">
-				<label for="class" class="form-label">Status</label>
+				<label for="class" class="form-label">Class</label>
                     <select id="level" class="form-select class" name="class">
                         <option selected>Faculty</option>
                         <option value="FIST">FIST</option>
