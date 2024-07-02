@@ -91,12 +91,14 @@ if(isset($_POST['borrow'])){
             $borrowID = ucwords($csv[0]);
             $bookID = ucwords($csv[1]);
             $memberID = ucwords($csv[2]);
-            $Bdate = ($csv[3]);
-            $Rdate = $csv[4];
+            $Bdate = new DateTime($csv[3]);
+            $formattedBdate = $Bdate->format('Y-m-d'); 
+            $Rdate = new DateTime($csv[4]);
+            $formattedRdate = $Rdate->format('Y-m-d');
             $status = $csv[5];
             $penalty = trim($csv[6]);
             
-            mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Bdate','$Rdate','$status','$penalty')"); ?>
+            mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$formattedBdate','$formattedRdate','$status','$penalty')"); ?>
             
                 <div class="alert alert-success" role="alert">
                     <h4 class="text-center">
