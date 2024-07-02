@@ -51,7 +51,9 @@ if($check > 0){ ?>
                     <td><?php echo $fetchTitle['title']; ?></td>
                     <td><?php echo $row['requestDate']; ?></td>
                     <td><?php echo $row['status']; ?></td>
-                    <td><form action="approveRequest.php" method="post" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to approve?')"><input type="hidden" name="requestID" value="<?php echo $row['requestID']; ?>"><button type="submit" name="approve" class="btn btn-primary" >Approve</button></form></td>
+                    <td><form action="approveRequest.php" method="post" style="display:inline-block;"><input type="hidden" name="requestID" value="<?php echo $row['requestID']; ?>"><button type="submit" name="approve" class="btn btn-primary" onclick="return confirm('Are you sure you want to approve?')">Approve</button>
+                        <button type="submit" name="ignore" class="btn btn-secondary" onclick="return confirm('Are you sure you want to ignore?')">Ignore</button>
+                        </form></td>
                 </tr>
        
  <?php   $no++; }
