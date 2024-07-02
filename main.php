@@ -91,24 +91,12 @@ include('header.php');
        <div class="content">
             <div class="quote-area">
                 <i class="fas fa-quote-left"></i>
-                <p class="quote">
-                    <script>fetch("https://api.quotable.io/random").then(res => res.json()).then(result =>{
-        console.log(result);
-        quoteText.innerText = result.content;
-        authorName.innerText = result.author;
-       
-    });</script>
-    </p>
+                <p class="quote"></p>
                 <i class="fas fa-quote-right"></i>
             </div>
             <div class="author">
                 <span>__</span>
-                <span class="name"><script>fetch("https://api.quotable.io/random").then(res => res.json()).then(result =>{
-        console.log(result);
-       
-        authorName.innerText = result.author;
-       
-    });</script></span>
+                <span class="name"></span>
             </div>
        </div>
        <div class="button">
@@ -120,7 +108,7 @@ include('header.php');
     </div>
 
 
-    <script src="quote.js"></script>
+    <script src="quotes.js"></script>
 
     
 
