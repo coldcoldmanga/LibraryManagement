@@ -56,7 +56,8 @@ if(isset($_POST['submit'])){
             </div>
 
 <?php    }
-    
+ 
+//check if member has penalty 
 else{
 
         $memberFine = mysqli_query($conn,"SELECT penalty FROM member WHERE memberID = '$memberID' ");
@@ -72,6 +73,7 @@ else{
 
 <?php }
 
+//check if amount is larger than penalty
 else if($amount > $result['penalty']){ ?>
 
 <div class="alert alert-warning" role="alert">
