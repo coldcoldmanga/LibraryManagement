@@ -117,7 +117,7 @@ else if($checkBook == 0){ ?>
             else{
                  $Rdate = date("Y-m-d",strtotime("+1 week"));
                  $insert = mysqli_query($conn,"INSERT INTO borrow (bookID,memberID,Bdate,Rdate,status) VALUES ('$bookID','$memberID','$Bdate','$Rdate','$status') ");
-                 //$update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' ");
+                 $update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' ");
 
                     ?> <div class="alert alert-success" role="alert">
                             <h4 class="text-center">
@@ -146,7 +146,7 @@ else if($checkBook == 0){ ?>
             else{
                  $Rdate = date("Y-m-d",strtotime("+2 week"));
                  $insert = mysqli_query($conn,"INSERT INTO borrow (bookID,memberID,Bdate,Rdate,status) VALUES ('$bookID','$memberID','$Bdate','$Rdate','$status') "); 
-                 //$update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' ");?>
+                 $update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' ");?>
 
                  <div class="alert alert-success" role="alert">
                             <h4 class="text-center">
@@ -176,7 +176,7 @@ else if($checkBook == 0){ ?>
             else{
                  $Rdate = date("Y-m-d",strtotime("+2 week"));
                  $insert = mysqli_query($conn,"INSERT INTO borrow (bookID,memberID,Bdate,Rdate,status) VALUES ('$bookID','$memberID','$Bdate','$Rdate','$status') ");
-                 //$update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' "); ?>
+                 $update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' "); ?>
 
                         <div class="alert alert-success" role="alert">
                             <h4 class="text-center">
@@ -206,7 +206,7 @@ else if($checkBook == 0){ ?>
             else{
                  $Rdate = date("Y-m-d",strtotime("+4 week"));
                  $insert = mysqli_query($conn,"INSERT INTO borrow (bookID,memberID,Bdate,Rdate,status) VALUES ('$bookID','$memberID','$Bdate','$Rdate','$status') ");
-                 //$update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' "); ?>
+                 $update = mysqli_query($conn,"UPDATE book SET stats = 'Borrowed' WHERE bookID = '$bookID' "); ?>
 
                         <div class="alert alert-success" role="alert">
                             <h4 class="text-center">

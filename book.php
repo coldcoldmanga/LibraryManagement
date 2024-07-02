@@ -44,7 +44,7 @@ if(isset($_POST['add'])){
 
     else{
 
-        /*switch($type){
+        switch($type){
 
             case "Fiction": $bookID = "F".$bookID;
             break;
@@ -59,7 +59,7 @@ if(isset($_POST['add'])){
             break;
 
             default: $bookID = "O".$bookID;
-        }*/
+        }
 
         $sql = "INSERT INTO book (bookID,title,author,publisher,type,price,ISBN,datetime) VALUES('$bookID','$title','$author','$publisher','$type','$price','$ISBN','$datetime')";
         $insert = mysqli_query($conn,$sql); 

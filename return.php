@@ -84,6 +84,7 @@ else if($checkBorrowed <= 0){ ?>
 
             $updateMemberPenalty = mysqli_query($conn,"UPDATE member SET penalty = '$finalAmount' WHERE memberID = '$memberID' ");
             $return = mysqli_query($conn,"UPDATE borrow SET status = 'Returned' WHERE bookID = '$bookID' AND status = 'Borrowing'"); 
+            $updateBookStatus = mysqli_query($conn,"UPDATE book SET stats = 'Available' WHERE bookID = '$bookID' ");
             
              ?>
             
@@ -97,7 +98,9 @@ else if($checkBorrowed <= 0){ ?>
         }
         else{
 
-            $return = mysqli_query($conn,"UPDATE borrow SET status = 'Returned' WHERE bookID = '$bookID' AND status = 'Borrowing'"); ?>
+            $return = mysqli_query($conn,"UPDATE borrow SET status = 'Returned' WHERE bookID = '$bookID' AND status = 'Borrowing'"); 
+            $updateBookStatus = mysqli_query($conn,"UPDATE book SET stats = 'Available' WHERE bookID = '$bookID' ");?>
+
                    
                    <div class="alert alert-success" role="alert">
                         <h4 class="text-center">
