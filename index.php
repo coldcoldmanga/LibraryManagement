@@ -125,7 +125,7 @@ if(isset($_POST['login'])){
 						</div><br>
 
 						<button class="btn btn-class" name="login">Login<i class="bi bi-send" style="margin-left: 10px;"></i></button>
-						<a href="memberPage/memberLogin.php" style="margin-left: 10px;">Student? Click Here</a>
+						<a href="memberPage/memberLogin.php" style="margin-left: 10px;">Member? Click Here</a>
 
 					</form>
 			</div>
