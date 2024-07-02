@@ -21,10 +21,11 @@ if(isset($_POST['book'])){
         $type = $csv[4];
         $price = $csv[5];
         $ISBN = $csv[6];
-        $datetime = date_format($csv[7], 'Y-m-d H:i:s'); //to make sure the format comply with mysql standard
+        $datetime = new DateTime($csv[7]);
+        $formattedDateTime = $datetime->format('Y-m-d H:i:s'); //to make sure the format comply with mysql standard
         $stats = $csv[8];
 
-        $insert = mysqli_query($conn, "INSERT INTO book VALUES ('$bookID','$title','$author','$publisher','$type','$price','$ISBN','$datetime','$stats')"); ?>
+        $insert = mysqli_query($conn, "INSERT INTO book VALUES ('$bookID','$title','$author','$publisher','$type','$price','$ISBN','$formattedDateTime','$stats')"); ?>
 
         
 
