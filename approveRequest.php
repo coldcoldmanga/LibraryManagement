@@ -34,7 +34,7 @@ if(isset($_POST['approve'])){
 if(isset($_POST['ignore'])){
 
     $requestID = $_POST['requestID'];
-    $update = mysqli_query($conn, "UPDATE request SET status = 'Ignored' WHERE requestID = '$requestID' ");
+    $update = mysqli_query($conn, "UPDATE request SET status = 'Rejected' WHERE requestID = '$requestID' ");
 
     header("location:request.php");
 }
