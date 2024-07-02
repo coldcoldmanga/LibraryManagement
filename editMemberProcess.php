@@ -98,7 +98,7 @@ if(isset($_POST['update'])){
 
 <div class="card w-50 box">
         <h5 class="card-header">Update Member's Information</h5>
-            <form action="editProcess.php" method="post" enctype="multipart/form-data"> 
+            <form action="editMemberProcess.php" method="post" enctype="multipart/form-data"> 
             <div class="card-body">
 
                 <input type="hidden" name="memberID" value="<?php echo $memberID;?>">

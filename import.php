@@ -8,7 +8,8 @@ include('navbar.php');
 //Importing the Book
 if(isset($_POST['book'])){
 
-    $file = $_FILES["importBook"]["tmp_name"];
+    if(isset($_FILES["importBook"]) && $_FILES["importBook"]["error"] == 0){
+        $file = $_FILES["importBook"]["tmp_name"];
     $file_open =fopen($file,"r");
     
     while(($csv = fgetcsv($file_open,1000,",")) !== false){
@@ -20,25 +21,30 @@ if(isset($_POST['book'])){
         $type = $csv[4];
         $price = $csv[5];
         $ISBN = $csv[6];
-        $datetime = $csv[7];
+        $datetime = date_format($csv[7], 'Y-m-d H:i:s'); //to make sure the format comply with mysql standard
         $stats = $csv[8];
 
         $insert = mysqli_query($conn, "INSERT INTO book VALUES ('$bookID','$title','$author','$publisher','$type','$price','$ISBN','$datetime','$stats')"); ?>
 
+        
 
 <div class="alert alert-success" role="alert">
 <h4 class="text-center">
      Book Record Imported Successfully
 </h4>
 </div> 
-
-<?php    
+  <?php  }
+    
+    }
+    else{
+        echo "<script>alert('Please upload a file before importing!')</script>";
 }
-
 }
-
+    
 //Importing the Member Record
 if(isset($_POST['member'])){
+
+if(isset($_FILES["importMember"]) && $_FILES["importMember"]["error"] == 0){
 
     $file = $_FILES["importMember"]["tmp_name"];
     $file_open =fopen($file,"r");
@@ -54,47 +60,54 @@ if(isset($_POST['member'])){
         $password = $csv[6];
         $penalty = $csv[7];
 
-        $insert = mysqli_query($conn, "INSERT INTO member(memberID, name, class, level, telephone, email, password, penalty) VALUES ('$memberID','$name','$class','$level','$telephone', '$email', '$password', '$penalty')"); 
-        
-            
+        $insert = mysqli_query($conn, "INSERT INTO member(memberID, name, class, level, telephone, email, password, penalty) VALUES ('$memberID','$name','$class','$level','$telephone', '$email', '$password', '$penalty')"); ?> 
+
+        <div class="alert alert-success" role="alert">
+        <h4 class="text-center">
+            Member Record Imported Successfully
+        </h4>
+        </div>
+<?php }     
 
   } 
+  else{
+    echo "<script>alert('Please upload a file before importing!')</script>";
+}
   
   ?>
 
-
-<div class="alert alert-success" role="alert">
-<h4 class="text-center">
-     Member Record Imported Successfully
-</h4>
-</div>
 <?php }             
 
 //Importing the Borrow Record
 if(isset($_POST['borrow'])){
 
-    $file = $_FILES["importBorrow"]["tmp_name"];
-    $file_open =fopen($file,"r");
+    if(isset($_FILES["importBook"]) && $_FILES["importBook"]["error"] == 0){
+        $file = $_FILES["importBorrow"]["tmp_name"];
+        $file_open =fopen($file,"r");
+        
+        while(($csv = fgetcsv($file_open,1000,",")) !== false){
     
-    while(($csv = fgetcsv($file_open,1000,",")) !== false){
+            $borrowID = ucwords($csv[0]);
+            $bookID = ucwords($csv[1]);
+            $memberID = ucwords($csv[2]);
+            $Rdate = $csv[3];
+            $Rtime = $csv[4];
+            $status = $csv[5];
+            $penalty = $csv[6];
+            
+            mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Rdate','$Rtime','$status','$penalty')"); ?>
+            
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">
+                         Borrow Record Imported Successfully
+                    </h4>
+                </div>
+ <?php   }
+    
 
-        $borrowID = ucwords($csv[0]);
-        $bookID = ucwords($csv[1]);
-        $memberID = ucwords($csv[2]);
-        $Rdate = $csv[3];
-        $Rtime = $csv[4];
-        $status = $csv[5];
-        $penalty = $csv[6];
-        
-        mysqli_query($conn, "INSERT INTO borrow VALUES ('$borrowID','$bookID','$memberID','$Rdate','$Rtime','$status','$penalty')"); ?>
-        
-            <div class="alert alert-success" role="alert">
-                <h4 class="text-center">
-                     Borrow Record Imported Successfully
-                </h4>
-            </div>
-
-<?php }
+}else{
+    echo "<script>alert('Please upload a file before importing!')</script>";
+}
 }
 
 ?>
